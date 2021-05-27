@@ -112,7 +112,8 @@ def respond(message):
         bot_message = random.choice(responses["default"])
     return bot_message
 
-  ELIZA I: asking questions
+  ELIZA I: ASKING QUESTION
+    
 import random
 
 def respond(message):
