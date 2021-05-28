@@ -132,3 +132,49 @@ send_message("what's today's weather?")
 # Send messages which don't end with a question mark
 send_message("I love building chatbots")
 send_message("I love building chatbots")
+
+ ELIZA II: EXTRACTING KEY PHRASES
+    # Define match_rule()
+def match_rule(rules, message):
+    response, phrase = "default", None
+    
+    # Iterate over the rules dictionary
+    for pattern, responses in rules.items():
+        # Create a match object
+        match = re.search(pattern, message)
+        if match is not None:
+            # Choose a random response
+            response = random.choice(responses)
+            if '{0}' in response:
+                phrase =  phrase = match.group(1)
+    # Return the response and phrase
+    return response.format(phrase)
+
+# Test match_rule
+print(match_rule(rules, "do you remember your last birthday"))
+
+
+ELIZA III: PRONOUNS
+  # Define replace_pronouns()
+def replace_pronouns(message):
+
+    message = message.lower()
+    if 'me' in message:
+        # Replace 'me' with 'you'
+     return re.sub('me','you',message)
+    if 'my' in message:
+        # Replace 'my' with 'your'
+     return re.sub('my','your',message)
+    if 'your' in message:
+        # Replace 'your' with 'my'
+     return re.sub('your','my',message)
+    if 'you' in message:
+        # Replace 'you' with 'me'
+        return re.sub('you','me',message)
+
+    return message
+
+print(replace_pronouns("my last birthday"))
+print(replace_pronouns("when you went to Florida"))
+print(replace_pronouns("I had my own castle"))
+
